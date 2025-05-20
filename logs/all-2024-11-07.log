@@ -1,0 +1,221 @@
+2024-11-07 17:28:27.002 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:28:27.005 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:28:27.005 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:28:27.005 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:28:27.005 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:28:27.005 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:28:27.005 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:28:27.005 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:28:27.005 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:28:27.005 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:28:27.010 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:28:27.010 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:28:27.010 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:28:27.010 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.693 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.700 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.710 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.710 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.713 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.713 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.716 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.716 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.716 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.716 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.716 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.732 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.733 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.733 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.733 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.733 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.733 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.733 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.733 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.748 [main] ERROR com.globant.academy.model.CartItem - Validation failed: Id cannot be null.
+2024-11-07 17:29:17.752 [main] ERROR com.globant.academy.model.CartItem - Validation failed: quantity must be greater than 0
+2024-11-07 17:29:17.754 [main] INFO  com.globant.academy.model.CartItem - probando
+2024-11-07 17:29:17.754 [main] ERROR com.globant.academy.model.CartItem - Validation failed: quantity cannot be null.
+2024-11-07 17:29:17.764 [main] ERROR com.globant.academy.model.CartItem - Validation failed: Product cannot be null.
+2024-11-07 17:36:35.212 [main] ERROR com.globant.academy.model.CartItem - Validation failed: Id cannot be null.
+2024-11-07 17:36:35.222 [main] ERROR com.globant.academy.model.CartItem - Validation failed: quantity must be greater than 0
+2024-11-07 17:36:35.231 [main] ERROR com.globant.academy.model.CartItem - Validation failed: quantity cannot be null.
+2024-11-07 17:36:35.231 [main] ERROR com.globant.academy.model.CartItem - Validation failed: Product cannot be null.
+2024-11-07 17:43:59.007 [main] INFO  com.globant.academy.javaAcademyApp - Library products above 100:
+7 | LIBRARY | Harry Potter | 110.0
+8 | LIBRARY | Java 8 | 200.0
+
+2024-11-07 17:43:59.020 [main] INFO  com.globant.academy.javaAcademyApp - Total price:  2480.0
+2024-11-07 17:43:59.023 [main] INFO  com.globant.academy.javaAcademyApp - Electronic products´ total price: 1900.0
+2024-11-07 17:43:59.031 [main] INFO  com.globant.academy.javaAcademyApp - Cart: Cart ID | ID | PRODUCT TYPE | PRODUCT NAME | PRICE | QUANTITY
+1 | 12 | OTHERS | Coat | 10.0 | 1
+1 | 13 | OTHERS | Tooth paste | 10.0 | 1
+1 | 6 | LIBRARY | Pencil | 50.0 | 1
+1 | 2 | ELECTRONIC | CPU | 100.0 | 1
+1 | 7 | LIBRARY | Harry Potter | 110.0 | 1
+1 | 3 | ELECTRONIC | Mouse | 200.0 | 1
+1 | 8 | LIBRARY | Java 8 | 200.0 | 1
+1 | 11 | OTHERS | T-shirt | 200.0 | 1
+1 | 4 | ELECTRONIC | Keyboard | 600.0 | 1
+1 | 1 | ELECTRONIC | TV | 1000.0 | 2
+
+2024-11-07 17:44:44.645 [main] INFO  com.globant.academy.javaAcademyApp - Library products above 100:
+7 | LIBRARY | Harry Potter | 110.0
+8 | LIBRARY | Java 8 | 200.0
+
+2024-11-07 17:44:44.661 [main] INFO  com.globant.academy.javaAcademyApp - Total price:  2480.0
+2024-11-07 17:44:44.661 [main] INFO  com.globant.academy.javaAcademyApp - Electronic products´ total price: 1900.0
+2024-11-07 17:44:44.670 [main] INFO  com.globant.academy.javaAcademyApp - Cart: Cart ID | ID | PRODUCT TYPE | PRODUCT NAME | PRICE | QUANTITY
+1 | 12 | OTHERS | Coat | 10.0 | 1
+1 | 13 | OTHERS | Tooth paste | 10.0 | 1
+1 | 6 | LIBRARY | Pencil | 50.0 | 1
+1 | 2 | ELECTRONIC | CPU | 100.0 | 1
+1 | 7 | LIBRARY | Harry Potter | 110.0 | 1
+1 | 3 | ELECTRONIC | Mouse | 200.0 | 1
+1 | 8 | LIBRARY | Java 8 | 200.0 | 1
+1 | 11 | OTHERS | T-shirt | 200.0 | 1
+1 | 4 | ELECTRONIC | Keyboard | 600.0 | 1
+1 | 1 | ELECTRONIC | TV | 1000.0 | 2
+
+2024-11-07 17:45:19.648 [main] INFO  com.globant.academy.javaAcademyApp - Library products above 100:
+7 | LIBRARY | Harry Potter | 110.0
+8 | LIBRARY | Java 8 | 200.0
+
+2024-11-07 17:45:19.657 [main] INFO  com.globant.academy.javaAcademyApp - Total price:  2480.0
+2024-11-07 17:45:19.659 [main] INFO  com.globant.academy.javaAcademyApp - Electronic products´ total price: 1900.0
+2024-11-07 17:45:19.661 [main] INFO  com.globant.academy.javaAcademyApp -
+"+Cart: Cart ID | ID | PRODUCT TYPE | PRODUCT NAME | PRICE | QUANTITY
+1 | 12 | OTHERS | Coat | 10.0 | 1
+1 | 13 | OTHERS | Tooth paste | 10.0 | 1
+1 | 6 | LIBRARY | Pencil | 50.0 | 1
+1 | 2 | ELECTRONIC | CPU | 100.0 | 1
+1 | 7 | LIBRARY | Harry Potter | 110.0 | 1
+1 | 3 | ELECTRONIC | Mouse | 200.0 | 1
+1 | 8 | LIBRARY | Java 8 | 200.0 | 1
+1 | 11 | OTHERS | T-shirt | 200.0 | 1
+1 | 4 | ELECTRONIC | Keyboard | 600.0 | 1
+1 | 1 | ELECTRONIC | TV | 1000.0 | 2
+
+2024-11-07 17:46:12.418 [main] INFO  com.globant.academy.javaAcademyApp - Library products above 100:
+7 | LIBRARY | Harry Potter | 110.0
+8 | LIBRARY | Java 8 | 200.0
+
+2024-11-07 17:46:12.427 [main] INFO  com.globant.academy.javaAcademyApp - Total price:  2480.0
+2024-11-07 17:46:12.427 [main] INFO  com.globant.academy.javaAcademyApp - Electronic products´ total price: 1900.0
+2024-11-07 17:46:12.432 [main] INFO  com.globant.academy.javaAcademyApp -
+Cart: Cart ID | ID | PRODUCT TYPE | PRODUCT NAME | PRICE | QUANTITY
+1 | 12 | OTHERS | Coat | 10.0 | 1
+1 | 13 | OTHERS | Tooth paste | 10.0 | 1
+1 | 6 | LIBRARY | Pencil | 50.0 | 1
+1 | 2 | ELECTRONIC | CPU | 100.0 | 1
+1 | 7 | LIBRARY | Harry Potter | 110.0 | 1
+1 | 3 | ELECTRONIC | Mouse | 200.0 | 1
+1 | 8 | LIBRARY | Java 8 | 200.0 | 1
+1 | 11 | OTHERS | T-shirt | 200.0 | 1
+1 | 4 | ELECTRONIC | Keyboard | 600.0 | 1
+1 | 1 | ELECTRONIC | TV | 1000.0 | 2
+
+2024-11-07 17:49:11.226 [main] ERROR com.globant.academy.model.CartItem - Validation failed: Id cannot be null.
+2024-11-07 17:52:53.706 [main] ERROR com.globant.academy.model.CartItem - Validation failed: Id cannot be null.
+2024-11-07 17:52:53.718 [main] ERROR com.globant.academy.model.CartItem - Validation failed: quantity must be greater than 0
+2024-11-07 17:52:53.725 [main] ERROR com.globant.academy.model.CartItem - Validation failed: quantity cannot be null.
+2024-11-07 17:52:53.728 [main] ERROR com.globant.academy.model.CartItem - Validation failed: Product cannot be null.
+2024-11-07 17:52:53.732 [main] ERROR com.globant.academy.model.Customer - Phone cannot be null
+2024-11-07 17:52:53.740 [main] ERROR com.globant.academy.model.Customer - Birthdate cannot be null
+2024-11-07 17:52:53.743 [main] ERROR com.globant.academy.model.Customer - Name cannot be null
+2024-11-07 17:52:53.743 [main] ERROR com.globant.academy.model.Customer - IDNumber cannot be null
+2024-11-07 17:52:53.754 [main] ERROR com.globant.academy.model.Customer - Lastname cannot be null
+2024-11-07 17:52:53.757 [main] ERROR com.globant.academy.model.Customer - Email cannot be null
+2024-11-07 17:52:53.762 [main] ERROR com.globant.academy.model.Customer - ID cannot be null
+2024-11-07 17:58:11.060 [main] ERROR com.globant.academy.model.ShoppingCart - Customer cannot be null
+2024-11-07 17:58:11.075 [main] ERROR com.globant.academy.model.ShoppingCart - ID cannot be null
+2024-11-07 17:58:11.101 [main] ERROR com.globant.academy.model.CartItem - Validation failed: Id cannot be null.
+2024-11-07 17:58:11.108 [main] ERROR com.globant.academy.model.CartItem - Validation failed: quantity must be greater than 0
+2024-11-07 17:58:11.116 [main] ERROR com.globant.academy.model.CartItem - Validation failed: quantity cannot be null.
+2024-11-07 17:58:11.120 [main] ERROR com.globant.academy.model.CartItem - Validation failed: Product cannot be null.
+2024-11-07 17:58:11.127 [main] ERROR com.globant.academy.model.Customer - Phone cannot be null
+2024-11-07 17:58:11.133 [main] ERROR com.globant.academy.model.Customer - Birthdate cannot be null
+2024-11-07 17:58:11.136 [main] ERROR com.globant.academy.model.Customer - Name cannot be null
+2024-11-07 17:58:11.142 [main] ERROR com.globant.academy.model.Customer - IDNumber cannot be null
+2024-11-07 17:58:11.147 [main] ERROR com.globant.academy.model.Customer - Lastname cannot be null
+2024-11-07 17:58:11.148 [main] ERROR com.globant.academy.model.Customer - Email cannot be null
+2024-11-07 17:58:11.153 [main] ERROR com.globant.academy.model.Customer - ID cannot be null
+2024-11-07 17:58:11.153 [main] ERROR com.globant.academy.model.Product - Description cannot be null
+2024-11-07 17:58:11.167 [main] ERROR com.globant.academy.model.Product - Name cannot be null
+2024-11-07 17:58:11.172 [main] ERROR com.globant.academy.model.Product - ID cannot be null
+2024-11-07 17:58:11.178 [main] ERROR com.globant.academy.model.Product - Type cannot be null
+2024-11-07 17:58:11.186 [main] ERROR com.globant.academy.model.Product - Price cannot be null
+2024-11-07 17:58:45.853 [main] ERROR com.globant.academy.model.ShoppingCart - Customer cannot be null
+2024-11-07 17:58:45.873 [main] ERROR com.globant.academy.model.ShoppingCart - ID cannot be null
+2024-11-07 17:58:45.891 [main] ERROR com.globant.academy.model.CartItem - Validation failed: Id cannot be null.
+2024-11-07 17:58:45.901 [main] ERROR com.globant.academy.model.CartItem - Validation failed: quantity must be greater than 0
+2024-11-07 17:58:45.901 [main] ERROR com.globant.academy.model.CartItem - Validation failed: quantity cannot be null.
+2024-11-07 17:58:45.910 [main] ERROR com.globant.academy.model.CartItem - Validation failed: Product cannot be null.
+2024-11-07 17:58:45.917 [main] ERROR com.globant.academy.model.Customer - Phone cannot be null
+2024-11-07 17:58:45.917 [main] ERROR com.globant.academy.model.Customer - Birthdate cannot be null
+2024-11-07 17:58:45.917 [main] ERROR com.globant.academy.model.Customer - Name cannot be null
+2024-11-07 17:58:45.933 [main] ERROR com.globant.academy.model.Customer - IDNumber cannot be null
+2024-11-07 17:58:45.933 [main] ERROR com.globant.academy.model.Customer - Lastname cannot be null
+2024-11-07 17:58:45.933 [main] ERROR com.globant.academy.model.Customer - Email cannot be null
+2024-11-07 17:58:45.933 [main] ERROR com.globant.academy.model.Customer - ID cannot be null
+2024-11-07 17:58:45.950 [main] ERROR com.globant.academy.model.Product - Description cannot be null
+2024-11-07 17:58:45.960 [main] ERROR com.globant.academy.model.Product - Name cannot be null
+2024-11-07 17:58:45.960 [main] ERROR com.globant.academy.model.Product - ID cannot be null
+2024-11-07 17:58:45.968 [main] ERROR com.globant.academy.model.Product - Type cannot be null
+2024-11-07 17:58:45.976 [main] ERROR com.globant.academy.model.Product - Price cannot be null
+2024-11-07 17:58:51.823 [main] INFO  com.globant.academy.javaAcademyApp - Library products above 100:
+7 | LIBRARY | Harry Potter | 110.0
+8 | LIBRARY | Java 8 | 200.0
+
+2024-11-07 17:58:51.827 [main] INFO  com.globant.academy.javaAcademyApp - Total price:  2480.0
+2024-11-07 17:58:51.834 [main] INFO  com.globant.academy.javaAcademyApp - Electronic products´ total price: 1900.0
+2024-11-07 17:58:51.841 [main] INFO  com.globant.academy.javaAcademyApp -
+Cart: Cart ID | ID | PRODUCT TYPE | PRODUCT NAME | PRICE | QUANTITY
+1 | 12 | OTHERS | Coat | 10.0 | 1
+1 | 13 | OTHERS | Tooth paste | 10.0 | 1
+1 | 6 | LIBRARY | Pencil | 50.0 | 1
+1 | 2 | ELECTRONIC | CPU | 100.0 | 1
+1 | 7 | LIBRARY | Harry Potter | 110.0 | 1
+1 | 3 | ELECTRONIC | Mouse | 200.0 | 1
+1 | 8 | LIBRARY | Java 8 | 200.0 | 1
+1 | 11 | OTHERS | T-shirt | 200.0 | 1
+1 | 4 | ELECTRONIC | Keyboard | 600.0 | 1
+1 | 1 | ELECTRONIC | TV | 1000.0 | 2
+
+2024-11-07 17:58:56.624 [main] INFO  com.globant.academy.javaAcademyApp - Library products above 100:
+7 | LIBRARY | Harry Potter | 110.0
+8 | LIBRARY | Java 8 | 200.0
+
+2024-11-07 17:58:56.628 [main] INFO  com.globant.academy.javaAcademyApp - Total price:  2480.0
+2024-11-07 17:58:56.628 [main] INFO  com.globant.academy.javaAcademyApp - Electronic products´ total price: 1900.0
+2024-11-07 17:58:56.642 [main] INFO  com.globant.academy.javaAcademyApp -
+Cart: Cart ID | ID | PRODUCT TYPE | PRODUCT NAME | PRICE | QUANTITY
+1 | 12 | OTHERS | Coat | 10.0 | 1
+1 | 13 | OTHERS | Tooth paste | 10.0 | 1
+1 | 6 | LIBRARY | Pencil | 50.0 | 1
+1 | 2 | ELECTRONIC | CPU | 100.0 | 1
+1 | 7 | LIBRARY | Harry Potter | 110.0 | 1
+1 | 3 | ELECTRONIC | Mouse | 200.0 | 1
+1 | 8 | LIBRARY | Java 8 | 200.0 | 1
+1 | 11 | OTHERS | T-shirt | 200.0 | 1
+1 | 4 | ELECTRONIC | Keyboard | 600.0 | 1
+1 | 1 | ELECTRONIC | TV | 1000.0 | 2
+
+2024-11-07 17:59:02.051 [main] INFO  com.globant.academy.javaAcademyApp - Library products above 100:
+7 | LIBRARY | Harry Potter | 110.0
+8 | LIBRARY | Java 8 | 200.0
+
+2024-11-07 17:59:02.056 [main] INFO  com.globant.academy.javaAcademyApp - Total price:  2480.0
+2024-11-07 17:59:02.056 [main] INFO  com.globant.academy.javaAcademyApp - Electronic products´ total price: 1900.0
+2024-11-07 17:59:02.056 [main] INFO  com.globant.academy.javaAcademyApp -
+Cart: Cart ID | ID | PRODUCT TYPE | PRODUCT NAME | PRICE | QUANTITY
+1 | 12 | OTHERS | Coat | 10.0 | 1
+1 | 13 | OTHERS | Tooth paste | 10.0 | 1
+1 | 6 | LIBRARY | Pencil | 50.0 | 1
+1 | 2 | ELECTRONIC | CPU | 100.0 | 1
+1 | 7 | LIBRARY | Harry Potter | 110.0 | 1
+1 | 3 | ELECTRONIC | Mouse | 200.0 | 1
+1 | 8 | LIBRARY | Java 8 | 200.0 | 1
+1 | 11 | OTHERS | T-shirt | 200.0 | 1
+1 | 4 | ELECTRONIC | Keyboard | 600.0 | 1
+1 | 1 | ELECTRONIC | TV | 1000.0 | 2
+

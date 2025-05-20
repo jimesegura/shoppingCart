@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CustomerService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">shopping-cart-service</a> &gt; <a href="index.source.html" class="el_package">com.globant.academy.service</a> &gt; <span class="el_source">CustomerService.java</span></div><h1>CustomerService.java</h1><pre class="source lang-java linenums">package com.globant.academy.service;
+
+import com.globant.academy.config.RabbitMQConfig;
+import com.globant.academy.dto.CustomerDTO;
+import com.globant.academy.dto.Message;
+import com.globant.academy.dto.NotificationDTO;
+import com.globant.academy.exception.CustomerNotFoundException;
+import com.globant.academy.mapper.CustomerMapper;
+import com.globant.academy.model.Customer;
+import com.globant.academy.repository.CustomerRepository;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+
+@EnableRabbit
+@Service
+public class CustomerService {
+
+    private final CustomerRepository customerRepository;
+    //private final Mapper mappers;
+    private final CustomerMapper mappers;
+    private final RabbitMQConfig rabbitMQConfig;
+    private final RabbitTemplate rabbitTemplate;
+
+    @Autowired
+<span class="fc" id="L32">    public CustomerService(CustomerRepository customerRepository, CustomerMapper mappers, RabbitMQConfig rabbitMQConfig, RabbitTemplate rabbitTemplate) {</span>
+<span class="fc" id="L33">        this.customerRepository = customerRepository;</span>
+<span class="fc" id="L34">        this.mappers = mappers;</span>
+<span class="fc" id="L35">        this.rabbitMQConfig = rabbitMQConfig;</span>
+<span class="fc" id="L36">        this.rabbitTemplate = rabbitTemplate;</span>
+<span class="fc" id="L37">    }</span>
+
+    public Customer createCustomer(CustomerDTO customerDTO){
+<span class="fc" id="L40">            Customer customer = mappers.toEntity(customerDTO);</span>
+
+<span class="fc" id="L42">             return customerRepository.save(customer);</span>
+    }
+
+    public List&lt;Customer&gt;findAll(){
+<span class="fc" id="L46">        return customerRepository.findAll();</span>
+    }
+
+    public Customer updateCustomer(Integer id, CustomerDTO customer) throws CustomerNotFoundException {
+<span class="fc" id="L50">        Customer findCustomer = customerRepository.findById(id)</span>
+<span class="fc" id="L51">                .orElseThrow(()-&gt; new CustomerNotFoundException(&quot;Could not find customer with id: &quot;+ id));</span>
+
+<span class="fc" id="L53">        findCustomer.setName(customer.getName());</span>
+<span class="fc" id="L54">        findCustomer.setLastname(customer.getLastname());</span>
+<span class="fc" id="L55">        findCustomer.setBirthdate(customer.getBirthdate());</span>
+<span class="fc" id="L56">        findCustomer.setEmail(customer.getEmail());</span>
+<span class="fc" id="L57">        findCustomer.setPhone(customer.getPhone());</span>
+<span class="fc" id="L58">        findCustomer.setIdNumber(customer.getIdNumber());</span>
+
+
+<span class="fc" id="L61">        return customerRepository.save(findCustomer);</span>
+    }
+
+    public void deleteCustomer(Integer id) throws CustomerNotFoundException {
+<span class="fc" id="L65">        Optional&lt;Customer&gt; findCustomer = customerRepository.findById(id);</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        if (findCustomer.isPresent()){</span>
+<span class="fc" id="L67">            customerRepository.delete(findCustomer.get());</span>
+        }else {
+<span class="fc" id="L69">            throw new CustomerNotFoundException(&quot;Customer with ID &quot;+ id+&quot; could not be found&quot;);</span>
+        }
+<span class="fc" id="L71">    }</span>
+
+    @Scheduled(cron = &quot;0 0 0 * * *&quot;)
+    public void sendBirthdayNotification(){
+<span class="nc" id="L75">        List&lt;Customer&gt; customerList= findAll();</span>
+<span class="nc" id="L76">        customerList.stream()</span>
+<span class="nc" id="L77">                .filter(customer -&gt; customer.getBirthdate().equals(LocalDate.now()))</span>
+<span class="nc" id="L78">                .forEach(customer -&gt; {</span>
+<span class="nc" id="L79">                        NotificationDTO notification = new NotificationDTO();</span>
+<span class="nc" id="L80">                        notification.setName(customer.getName());</span>
+<span class="nc" id="L81">                        notification.setLastname(customer.getLastname());</span>
+<span class="nc" id="L82">                        notification.setEmail(customer.getEmail());</span>
+<span class="nc" id="L83">                        notification.setPhone(customer.getPhone());</span>
+<span class="nc" id="L84">                        notification.setMessage(Message.BIRTHDAY);</span>
+
+<span class="nc" id="L86">                        rabbitTemplate.convertAndSend(rabbitMQConfig.NOTIFICATION_QUEUE, notification);</span>
+<span class="nc" id="L87">                }</span>
+                );
+<span class="nc" id="L89">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,0 +1,12 @@
+2024-11-15 10:58:08.488 [main] INFO  com.globant.academy.repository.CustomerRepository - One product added successfully
+2024-11-15 10:58:08.531 [main] INFO  com.globant.academy.repository.ShoppingCartRepository - Cart created successfully!
+2024-11-15 10:58:08.550 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-15 10:58:08.550 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer deleted successfully!
+2024-11-15 10:58:08.562 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-15 10:58:08.570 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-15 10:58:08.570 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer updated successfully!
+2024-11-15 10:58:08.581 [main] INFO  com.globant.academy.repository.ProductRepository - Product created successfully!
+2024-11-15 10:58:08.585 [main] INFO  com.globant.academy.repository.ProductRepository - Product created successfully!
+2024-11-15 10:58:08.598 [main] INFO  com.globant.academy.repository.ProductRepository - Product created successfully!
+2024-11-15 10:58:08.618 [main] INFO  com.globant.academy.repository.ProductRepository - Product created successfully!
+2024-11-15 10:58:08.618 [main] INFO  com.globant.academy.repository.ProductRepository - Product updated successfully

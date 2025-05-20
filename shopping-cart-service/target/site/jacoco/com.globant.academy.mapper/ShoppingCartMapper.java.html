@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ShoppingCartMapper.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">shopping-cart-service</a> &gt; <a href="index.source.html" class="el_package">com.globant.academy.mapper</a> &gt; <span class="el_source">ShoppingCartMapper.java</span></div><h1>ShoppingCartMapper.java</h1><pre class="source lang-java linenums">package com.globant.academy.mapper;
+
+import com.globant.academy.dto.ShoppingCartDTO;
+import com.globant.academy.model.ShoppingCart;
+import org.springframework.stereotype.Component;
+
+
+@Component
+public class ShoppingCartMapper  implements  ModelMapper&lt;ShoppingCart, ShoppingCartDTO&gt;{
+    private final CustomerMapper customerMapper;
+    private final CartItemMapper cartItemMapper;
+
+<span class="fc" id="L13">    public ShoppingCartMapper(CustomerMapper customerMapper, CartItemMapper cartItemMapper) {</span>
+<span class="fc" id="L14">        this.customerMapper = customerMapper;</span>
+<span class="fc" id="L15">        this.cartItemMapper = cartItemMapper;</span>
+<span class="fc" id="L16">    }</span>
+
+
+    @Override
+    public ShoppingCartDTO toDto(ShoppingCart entity) {
+<span class="fc" id="L21">        ShoppingCartDTO shoppingCartDTO= new ShoppingCartDTO();</span>
+<span class="fc" id="L22">        shoppingCartDTO.setId(entity.getId());</span>
+<span class="fc" id="L23">        shoppingCartDTO.setStatus(entity.getStatus());</span>
+<span class="fc" id="L24">        shoppingCartDTO.setCustomer(customerMapper.toDto(entity.getCustomer()));</span>
+<span class="fc" id="L25">        shoppingCartDTO.setProducts(cartItemMapper.toDTOList(entity.getProductList()));</span>
+<span class="fc" id="L26">        return shoppingCartDTO;</span>
+    }
+
+    @Override
+    public ShoppingCart toEntity(ShoppingCartDTO dto) {
+<span class="fc" id="L31">        ShoppingCart shoppingCart= new ShoppingCart();</span>
+<span class="fc" id="L32">        shoppingCart.setId(dto.getId());</span>
+<span class="fc" id="L33">        shoppingCart.setStatus(dto.getStatus());</span>
+<span class="fc" id="L34">        shoppingCart.setCustomer(customerMapper.toEntity(dto.getCustomer()));</span>
+<span class="fc" id="L35">        shoppingCart.setProductList(cartItemMapper.toEntityList(dto.getProducts()));</span>
+<span class="fc" id="L36">        return shoppingCart;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

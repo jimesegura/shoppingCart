@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">shopping-cart-service</a> &gt; <a href="index.source.html" class="el_package">com.globant.academy.controller</a> &gt; <span class="el_source">ProductController.java</span></div><h1>ProductController.java</h1><pre class="source lang-java linenums">package com.globant.academy.controller;
+
+import com.globant.academy.dto.ProductDTO;
+import com.globant.academy.exception.ProductNotFoundException;
+import com.globant.academy.mapper.ProductMapper;
+import com.globant.academy.model.Product;
+import com.globant.academy.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping(&quot;/api/products&quot;)
+public class ProductController {
+
+    private final ProductService productService;
+    private final ProductMapper mappers;
+
+    @Autowired
+<span class="fc" id="L24">    public ProductController(ProductService productService, ProductMapper mappers) {</span>
+<span class="fc" id="L25">        this.productService = productService;</span>
+<span class="fc" id="L26">        this.mappers = mappers;</span>
+<span class="fc" id="L27">    }</span>
+
+    @PostMapping()
+    public ResponseEntity&lt;ProductDTO&gt; createProduct(@RequestBody ProductDTO productDTO) {
+<span class="fc" id="L31">        Product createProduct = productService.createProduct(productDTO);</span>
+<span class="fc" id="L32">        ProductDTO finalProduct = mappers.toDto(createProduct);</span>
+<span class="fc" id="L33">        return ResponseEntity</span>
+<span class="fc" id="L34">                .status(HttpStatus.CREATED)</span>
+<span class="fc" id="L35">                .body(finalProduct);</span>
+    }
+
+    @GetMapping()
+    public ResponseEntity&lt;List&lt;ProductDTO&gt;&gt; findAll(){
+<span class="fc" id="L40">        List&lt;Product&gt;productList = productService.findAll();</span>
+<span class="fc" id="L41">        List&lt;ProductDTO&gt; productDTOS = productList.stream()</span>
+<span class="fc" id="L42">                .map(product -&gt; mappers.toDto(product))</span>
+<span class="fc" id="L43">                .toList();</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">        return productDTOS.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(productDTOS);</span>
+    }
+
+    @PutMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;ProductDTO&gt; update(@PathVariable Integer id,@RequestBody ProductDTO productDTO) throws ProductNotFoundException {
+<span class="fc" id="L49">        Product product = productService.updateProduct(id,productDTO);</span>
+<span class="fc" id="L50">        return ResponseEntity.ok(mappers.toDto(product));</span>
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity delete(@PathVariable Integer id) throws ProductNotFoundException {
+<span class="fc" id="L55">            productService.deleteProduct(id);</span>
+<span class="fc" id="L56">            return ResponseEntity.ok().build();</span>
+    }
+
+    @GetMapping(&quot;/{id}&quot;)
+    public ResponseEntity&lt;ProductDTO&gt; getProductById(@PathVariable Integer id) throws ProductNotFoundException {
+<span class="fc" id="L61">        Product product = productService.findById(id);</span>
+<span class="fc" id="L62">        ProductDTO productDTO = mappers.toDto(product);</span>
+<span class="fc" id="L63">        return ResponseEntity.ok(productDTO);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

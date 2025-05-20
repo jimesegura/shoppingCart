@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ShoppingCartController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">shopping-cart-service</a> &gt; <a href="index.source.html" class="el_package">com.globant.academy.controller</a> &gt; <span class="el_source">ShoppingCartController.java</span></div><h1>ShoppingCartController.java</h1><pre class="source lang-java linenums">package com.globant.academy.controller;
+
+import com.globant.academy.dto.CartItemDTO;
+import com.globant.academy.dto.ProductDTO;
+import com.globant.academy.dto.ShoppingCartDTO;
+import com.globant.academy.exception.CartItemNotFoundException;
+import com.globant.academy.exception.CustomerNotFoundException;
+import com.globant.academy.exception.ProductNotFoundException;
+import com.globant.academy.mapper.CartItemMapper;
+import com.globant.academy.mapper.ProductMapper;
+import com.globant.academy.mapper.ShoppingCartMapper;
+import com.globant.academy.model.CartItem;
+import com.globant.academy.model.Product;
+import com.globant.academy.model.ShoppingCart;
+import com.globant.academy.service.CartItemService;
+import com.globant.academy.service.ProductService;
+import com.globant.academy.exception.ShoppingCartNotFoundException;
+import com.globant.academy.service.ShoppingCartService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Collectors;
+
+
+@RestController
+@RequestMapping(&quot;/api/carts&quot;)
+public class ShoppingCartController {
+
+    private final ShoppingCartService shoppingCartService;
+    private final CartItemService cartItemService;
+    private final ProductService productService;
+    //private final Mapper mappers;
+    private final ShoppingCartMapper mappers;
+    private final CartItemMapper itemMapper;
+    private final ProductMapper productMapper;
+
+    @Autowired
+<span class="fc" id="L42">    public ShoppingCartController(ShoppingCartService shoppingCartService, CartItemService cartItemService, ProductService productService, ShoppingCartMapper mappers, CartItemMapper itemMapper, ProductMapper productMapper) {</span>
+<span class="fc" id="L43">        this.shoppingCartService = shoppingCartService;</span>
+<span class="fc" id="L44">        this.cartItemService = cartItemService;</span>
+<span class="fc" id="L45">        this.productService = productService;</span>
+<span class="fc" id="L46">        this.mappers = mappers;</span>
+<span class="fc" id="L47">        this.itemMapper = itemMapper;</span>
+<span class="fc" id="L48">        this.productMapper = productMapper;</span>
+<span class="fc" id="L49">    }</span>
+
+    @PutMapping(&quot;/{cartId}/submit&quot;)
+    public ResponseEntity&lt;ShoppingCartDTO&gt; submitCart(@PathVariable Integer cartId) throws ShoppingCartNotFoundException {
+<span class="nc" id="L53">        ShoppingCart shoppingCart = shoppingCartService.submitCart(cartId);</span>
+<span class="nc" id="L54">        return ResponseEntity.ok(mappers.toDto(shoppingCart));</span>
+    }
+
+    @PostMapping(&quot;/{customerId}&quot;)
+    public ResponseEntity&lt;ShoppingCartDTO&gt; createCart(@PathVariable Integer customerId) throws CustomerNotFoundException {
+<span class="fc" id="L59">            ShoppingCart shoppingCart = shoppingCartService.createShoppingCart(customerId);</span>
+<span class="fc" id="L60">            ShoppingCartDTO shoppingCartDTO = mappers.toDto(shoppingCart);</span>
+<span class="fc" id="L61">            return ResponseEntity</span>
+<span class="fc" id="L62">                    .status(HttpStatus.CREATED)</span>
+<span class="fc" id="L63">                    .body(shoppingCartDTO);</span>
+    }
+
+    @PutMapping(&quot;/{id}/cart&quot;)
+    public ResponseEntity&lt;ShoppingCartDTO&gt; updateCart(@PathVariable Integer id, @RequestBody ShoppingCartDTO shoppingCartDTO) throws ShoppingCartNotFoundException, CustomerNotFoundException {
+<span class="nc" id="L68">        ShoppingCart shoppingCartToUpdate = mappers.toEntity(shoppingCartDTO);</span>
+<span class="nc" id="L69">        shoppingCartToUpdate.setId(id);</span>
+<span class="nc" id="L70">        shoppingCartToUpdate.getProductList().stream()</span>
+<span class="nc" id="L71">                .forEach(item -&gt; item.setCart(shoppingCartToUpdate));</span>
+<span class="nc" id="L72">        ShoppingCart cart = shoppingCartService.updateCart(shoppingCartToUpdate);</span>
+<span class="nc" id="L73">        return ResponseEntity.ok(mappers.toDto(cart));</span>
+    }
+
+    @PutMapping(&quot;/{cartId}/item&quot;)
+    public ResponseEntity&lt;CartItemDTO&gt; updateItem(@PathVariable Integer cartId, @RequestBody CartItemDTO cartItemDto) throws CartItemNotFoundException, ShoppingCartNotFoundException {
+<span class="nc" id="L78">        CartItem cartItem = itemMapper.toEntity(cartItemDto);</span>
+<span class="nc" id="L79">        cartItem.setCart(shoppingCartService.findCart(cartId));</span>
+<span class="nc" id="L80">        CartItem item = cartItemService.updateItem(cartItem);</span>
+<span class="nc" id="L81">        return ResponseEntity.ok(itemMapper.toDto(item));</span>
+    }
+
+    @GetMapping()
+    public ResponseEntity&lt;List&lt;ShoppingCartDTO&gt;&gt; findAllCarts(){
+<span class="fc" id="L86">        List&lt;ShoppingCart&gt; shoppingCarts = shoppingCartService.findAll();</span>
+<span class="fc" id="L87">        List&lt;ShoppingCartDTO&gt; shoppingCartDTOS = shoppingCarts.stream()</span>
+<span class="fc" id="L88">                .map(cart -&gt; mappers.toDto(cart))</span>
+<span class="fc" id="L89">                .collect(Collectors.toList());</span>
+<span class="pc bpc" id="L90" title="1 of 2 branches missed.">        return shoppingCartDTOS.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(shoppingCartDTOS);</span>
+    }
+
+    @DeleteMapping(&quot;/{id}&quot;)
+    public ResponseEntity deleteCart(@PathVariable Integer id) throws ShoppingCartNotFoundException {
+<span class="fc" id="L95">            shoppingCartService.deleteCart(id);</span>
+<span class="fc" id="L96">            return ResponseEntity.ok().build();</span>
+    }
+
+    @GetMapping(&quot;/{id}/total&quot;)
+    public BigDecimal getTotalPrice(@PathVariable Integer id) throws ShoppingCartNotFoundException {
+<span class="nc" id="L101">        ShoppingCart cart= shoppingCartService.getTotal(id);</span>
+<span class="nc" id="L102">        return mappers.toDto(cart).getTotalPrice();</span>
+    }
+
+    @PostMapping(&quot;/{cartId}/items&quot;)
+    public ResponseEntity&lt;CartItemDTO&gt; createCartItem(@PathVariable Integer cartId, @RequestParam Integer productId, @RequestParam Integer quantity) throws ShoppingCartNotFoundException, ProductNotFoundException {
+<span class="nc" id="L107">        CartItem newCartItem = cartItemService.createCartItem(cartId,productId,quantity);</span>
+<span class="nc" id="L108">        CartItemDTO cartItem = itemMapper.toDto(newCartItem);</span>
+<span class="nc" id="L109">        return ResponseEntity</span>
+<span class="nc" id="L110">                .status(HttpStatus.CREATED)</span>
+<span class="nc" id="L111">                .body(cartItem);</span>
+    }
+
+    @GetMapping(&quot;/{cartId}/items&quot;)
+    public ResponseEntity&lt;List&lt;CartItemDTO&gt;&gt; findAllItems(@PathVariable Integer cartId){
+<span class="fc" id="L116">        List&lt;CartItem&gt; cartItems = cartItemService.findAll(cartId);</span>
+<span class="fc" id="L117">        List&lt;CartItemDTO&gt; cartItemDTOs = cartItems.stream()</span>
+<span class="fc" id="L118">                .map(cartItem -&gt; itemMapper.toDto(cartItem))</span>
+<span class="fc" id="L119">                .toList();</span>
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">        return cartItemDTOs.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(cartItemDTOs);</span>
+    }
+
+    @DeleteMapping(&quot;/{cartId}/items/{id}&quot;)
+    public ResponseEntity deleteItem(@PathVariable Integer id, @PathVariable Integer cartId) throws CartItemNotFoundException {
+<span class="fc" id="L125">            cartItemService.deleteCartItem(id);</span>
+<span class="fc" id="L126">            return ResponseEntity.ok().build();</span>
+    }
+
+    @GetMapping(&quot;/{cartId}/products&quot;)
+    public ResponseEntity&lt;List&lt;ProductDTO&gt;&gt; getProductsByCartId(@PathVariable Integer cartId){
+<span class="fc" id="L131">        List&lt;Product&gt;productList = productService.getProductsByCartId(cartId);</span>
+<span class="fc" id="L132">        List&lt;ProductDTO&gt; productDTOS = productList.stream()</span>
+<span class="fc" id="L133">                .map(product -&gt; productMapper.toDto(product))</span>
+<span class="fc" id="L134">                .toList();</span>
+<span class="pc bpc" id="L135" title="1 of 2 branches missed.">        return productDTOS.isEmpty() ? ResponseEntity.noContent().build() : ResponseEntity.ok(productDTOS);</span>
+    }
+}
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

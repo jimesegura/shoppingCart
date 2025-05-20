@@ -1,0 +1,152 @@
+2024-11-11 11:00:09.722 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:00:09.728 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:00:09.729 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:00:09.749 [main] INFO  com.globant.academy.javaAcademyApp - Library products above 100:
+7 | LIBRARY | Harry Potter | 110.0
+8 | LIBRARY | Java 8 | 200.0
+
+2024-11-11 11:00:09.751 [main] INFO  com.globant.academy.javaAcademyApp - Total price:  2480.0
+2024-11-11 11:00:09.751 [main] INFO  com.globant.academy.javaAcademyApp - Electronic products´ total price: 1900.0
+2024-11-11 11:00:09.756 [main] INFO  com.globant.academy.javaAcademyApp -
+Cart: Cart ID | ID | PRODUCT TYPE | PRODUCT NAME | PRICE | QUANTITY
+1 | 12 | OTHERS | Coat | 10.0 | 1
+1 | 13 | OTHERS | Tooth paste | 10.0 | 1
+1 | 6 | LIBRARY | Pencil | 50.0 | 1
+1 | 2 | ELECTRONIC | CPU | 100.0 | 1
+1 | 7 | LIBRARY | Harry Potter | 110.0 | 1
+1 | 3 | ELECTRONIC | Mouse | 200.0 | 1
+1 | 8 | LIBRARY | Java 8 | 200.0 | 1
+1 | 11 | OTHERS | T-shirt | 200.0 | 1
+1 | 4 | ELECTRONIC | Keyboard | 600.0 | 1
+1 | 1 | ELECTRONIC | TV | 1000.0 | 2
+
+2024-11-11 11:01:01.053 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:01:01.057 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:01:01.059 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:01:01.073 [main] INFO  com.globant.academy.javaAcademyApp - Library products above 100:
+7 | LIBRARY | Harry Potter | 110.0
+8 | LIBRARY | Java 8 | 200.0
+
+2024-11-11 11:01:01.074 [main] INFO  com.globant.academy.javaAcademyApp - Total price:  2480.0
+2024-11-11 11:01:01.075 [main] INFO  com.globant.academy.javaAcademyApp - Electronic products´ total price: 1900.0
+2024-11-11 11:01:01.079 [main] INFO  com.globant.academy.javaAcademyApp -
+Cart: Cart ID | ID | PRODUCT TYPE | PRODUCT NAME | PRICE | QUANTITY
+1 | 12 | OTHERS | Coat | 10.0 | 1
+1 | 13 | OTHERS | Tooth paste | 10.0 | 1
+1 | 6 | LIBRARY | Pencil | 50.0 | 1
+1 | 2 | ELECTRONIC | CPU | 100.0 | 1
+1 | 7 | LIBRARY | Harry Potter | 110.0 | 1
+1 | 3 | ELECTRONIC | Mouse | 200.0 | 1
+1 | 8 | LIBRARY | Java 8 | 200.0 | 1
+1 | 11 | OTHERS | T-shirt | 200.0 | 1
+1 | 4 | ELECTRONIC | Keyboard | 600.0 | 1
+1 | 1 | ELECTRONIC | TV | 1000.0 | 2
+
+2024-11-11 11:01:05.670 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:01:05.675 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:01:05.676 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:01:28.297 [main] INFO  com.globant.academy.javaAcademyApp - Library products above 100:
+7 | LIBRARY | Harry Potter | 110.0
+8 | LIBRARY | Java 8 | 200.0
+
+2024-11-11 11:01:28.298 [main] INFO  com.globant.academy.javaAcademyApp - Total price:  2480.0
+2024-11-11 11:01:28.298 [main] INFO  com.globant.academy.javaAcademyApp - Electronic products´ total price: 1900.0
+2024-11-11 11:01:28.303 [main] INFO  com.globant.academy.javaAcademyApp -
+Cart: Cart ID | ID | PRODUCT TYPE | PRODUCT NAME | PRICE | QUANTITY
+1 | 12 | OTHERS | Coat | 10.0 | 1
+1 | 13 | OTHERS | Tooth paste | 10.0 | 1
+1 | 6 | LIBRARY | Pencil | 50.0 | 1
+1 | 2 | ELECTRONIC | CPU | 100.0 | 1
+1 | 7 | LIBRARY | Harry Potter | 110.0 | 1
+1 | 3 | ELECTRONIC | Mouse | 200.0 | 1
+1 | 8 | LIBRARY | Java 8 | 200.0 | 1
+1 | 11 | OTHERS | T-shirt | 200.0 | 1
+1 | 4 | ELECTRONIC | Keyboard | 600.0 | 1
+1 | 1 | ELECTRONIC | TV | 1000.0 | 2
+
+2024-11-11 11:04:07.173 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:04:07.177 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:04:07.179 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:05:00.864 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:05:00.869 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:05:00.870 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:10:27.394 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:10:27.399 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:10:27.401 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:11:48.746 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:11:48.761 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:11:48.761 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:26:55.234 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:26:55.238 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:26:55.239 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:28:50.872 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:28:50.877 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:28:50.878 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:29:07.939 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:29:07.945 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:29:07.946 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:30:43.018 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:30:43.023 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:30:43.024 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:33:12.381 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:33:12.386 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:33:12.387 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:36:30.933 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:36:30.937 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:36:30.939 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:38:38.882 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:38:38.888 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:38:38.890 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:38:59.389 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:38:59.389 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:38:59.389 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:41:24.851 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:41:24.856 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:41:24.857 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 11:50:01.128 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 11:50:01.132 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 11:50:01.133 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 12:03:09.036 [main] INFO  com.globant.academy.repository.CustomerRepository - Customer created successfully!
+2024-11-11 12:03:09.043 [main] ERROR com.globant.academy.repository.CustomerRepository - Customer update failed.
+2024-11-11 12:03:09.044 [main] ERROR com.globant.academy.repository.CustomerRepository - Could not delete customer
+2024-11-11 12:05:05.237 [main] INFO  com.globant.academy.repository.ShoppingCartRepository - Cart created successfully!
+2024-11-11 12:05:05.245 [main] INFO  com.globant.academy.repository.ProductRepository - Product created successfully!
+2024-11-11 12:05:05.257 [main] INFO  com.globant.academy.javaAcademyApp - Library products above 100:
+7 | LIBRARY | Harry Potter | 110.0
+8 | LIBRARY | Java 8 | 200.0
+
+2024-11-11 12:05:05.258 [main] INFO  com.globant.academy.javaAcademyApp - Total price:  2480.0
+2024-11-11 12:05:05.259 [main] INFO  com.globant.academy.javaAcademyApp - Electronic products´ total price: 1900.0
+2024-11-11 12:05:05.266 [main] INFO  com.globant.academy.javaAcademyApp -
+Cart: Cart ID | ID | PRODUCT TYPE | PRODUCT NAME | PRICE | QUANTITY
+1 | 12 | OTHERS | Coat | 10.0 | 1
+1 | 13 | OTHERS | Tooth paste | 10.0 | 1
+1 | 6 | LIBRARY | Pencil | 50.0 | 1
+1 | 2 | ELECTRONIC | CPU | 100.0 | 1
+1 | 7 | LIBRARY | Harry Potter | 110.0 | 1
+1 | 3 | ELECTRONIC | Mouse | 200.0 | 1
+1 | 8 | LIBRARY | Java 8 | 200.0 | 1
+1 | 11 | OTHERS | T-shirt | 200.0 | 1
+1 | 4 | ELECTRONIC | Keyboard | 600.0 | 1
+1 | 1 | ELECTRONIC | TV | 1000.0 | 2
+
+2024-11-11 17:17:03.620 [main] INFO  com.globant.academy.repository.CustomerRepository - One product added
+2024-11-11 17:17:03.652 [main] INFO  com.globant.academy.javaAcademyApp - Library products above 100:
+7 | LIBRARY | Harry Potter | 110.0
+8 | LIBRARY | Java 8 | 200.0
+
+2024-11-11 17:17:03.652 [main] INFO  com.globant.academy.javaAcademyApp - Total price:  2480.0
+2024-11-11 17:17:03.659 [main] INFO  com.globant.academy.javaAcademyApp - Electronic products´ total price: 1900.0
+2024-11-11 17:17:03.673 [main] INFO  com.globant.academy.javaAcademyApp -
+Cart: Cart ID | ID | PRODUCT TYPE | PRODUCT NAME | PRICE | QUANTITY
+1 | 12 | OTHERS | Coat | 10.0 | 1
+1 | 13 | OTHERS | Tooth paste | 10.0 | 1
+1 | 6 | LIBRARY | Pencil | 50.0 | 1
+1 | 2 | ELECTRONIC | CPU | 100.0 | 1
+1 | 7 | LIBRARY | Harry Potter | 110.0 | 1
+1 | 3 | ELECTRONIC | Mouse | 200.0 | 1
+1 | 8 | LIBRARY | Java 8 | 200.0 | 1
+1 | 11 | OTHERS | T-shirt | 200.0 | 1
+1 | 4 | ELECTRONIC | Keyboard | 600.0 | 1
+1 | 1 | ELECTRONIC | TV | 1000.0 | 2
+

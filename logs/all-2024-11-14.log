@@ -1,0 +1,19 @@
+2024-11-14 11:50:54.847 [main] INFO  com.globant.academy.javaAcademyApp - Library products above 100:
+7 | LIBRARY | Harry Potter | 110.0
+8 | LIBRARY | Java 8 | 200.0
+
+2024-11-14 11:50:54.851 [main] INFO  com.globant.academy.javaAcademyApp - Total price:  2480.0
+2024-11-14 11:50:54.851 [main] INFO  com.globant.academy.javaAcademyApp - Electronic products´ total price: 1900.0
+2024-11-14 11:50:54.856 [main] INFO  com.globant.academy.javaAcademyApp -
+Cart: Cart ID | ID | PRODUCT TYPE | PRODUCT NAME | PRICE | QUANTITY
+1 | 12 | OTHERS | Coat | 10.0 | 1
+1 | 13 | OTHERS | Tooth paste | 10.0 | 1
+1 | 6 | LIBRARY | Pencil | 50.0 | 1
+1 | 2 | ELECTRONIC | CPU | 100.0 | 1
+1 | 7 | LIBRARY | Harry Potter | 110.0 | 1
+1 | 3 | ELECTRONIC | Mouse | 200.0 | 1
+1 | 8 | LIBRARY | Java 8 | 200.0 | 1
+1 | 11 | OTHERS | T-shirt | 200.0 | 1
+1 | 4 | ELECTRONIC | Keyboard | 600.0 | 1
+1 | 1 | ELECTRONIC | TV | 1000.0 | 2
+

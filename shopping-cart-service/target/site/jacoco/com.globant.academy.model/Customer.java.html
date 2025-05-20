@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Customer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">shopping-cart-service</a> &gt; <a href="index.source.html" class="el_package">com.globant.academy.model</a> &gt; <span class="el_source">Customer.java</span></div><h1>Customer.java</h1><pre class="source lang-java linenums">package com.globant.academy.model;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Objects;
+@Getter
+@Setter
+@EqualsAndHashCode
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = &quot;customer&quot;)
+public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(name = &quot;name&quot;)
+    private String name;
+    @Column(name = &quot;lastname&quot;)
+    private String lastname;
+    @Column(name = &quot;birthdate&quot;)
+    private LocalDate birthdate;
+    @Column(name = &quot;email&quot;)
+    private String email;
+    @Column(name = &quot;phone&quot;)
+    private Integer phone;
+    @Column(name = &quot;idNumber&quot;)
+    private Integer idNumber;
+
+    @OneToMany(mappedBy = &quot;customer&quot;)
+    private List&lt;ShoppingCart&gt; shoppingCartList;
+
+<span class="fc" id="L49">    public Customer(Integer id, String name, String lastname, LocalDate bithdate, String email, Integer phone, Integer idNumber) {</span>
+<span class="fc" id="L50">        validateCustomer(id, name, lastname,  bithdate,  email,  phone,  idNumber);</span>
+<span class="fc" id="L51">        this.id = id;</span>
+<span class="fc" id="L52">        this.name = name;</span>
+<span class="fc" id="L53">        this.lastname = lastname;</span>
+<span class="fc" id="L54">        this.birthdate = bithdate;</span>
+<span class="fc" id="L55">        this.email= email;</span>
+<span class="fc" id="L56">        this.phone=phone;</span>
+<span class="fc" id="L57">        this.idNumber=idNumber;</span>
+<span class="fc" id="L58">    }</span>
+
+    private void validateCustomer(Integer id, String name, String lastname, LocalDate bithdate, String email, Integer phone, Integer idNumber){
+<span class="fc bfc" id="L61" title="All 2 branches covered.">        if(Objects.isNull(id))throw new IllegalArgumentException(&quot;ID cannot be null&quot;);</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        if(Objects.isNull(name))throw new IllegalArgumentException(&quot;Name cannot be null&quot;);</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">        if(Objects.isNull(lastname))throw  new IllegalArgumentException(&quot;Lastname cannot be null&quot;);</span>
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        if(Objects.isNull(bithdate))throw new IllegalArgumentException(&quot;Birthdate cannot be null&quot;);</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        if(Objects.isNull(email))throw new IllegalArgumentException(&quot;Email cannot be null&quot;);</span>
+<span class="fc bfc" id="L66" title="All 2 branches covered.">        if(Objects.isNull(phone))throw new IllegalArgumentException(&quot;Phone cannot be null&quot;);</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if(Objects.isNull(idNumber))throw new IllegalArgumentException(&quot;IDNumber cannot be null&quot;);</span>
+<span class="fc" id="L68">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

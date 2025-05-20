@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ShoppingCart.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">shopping-cart-service</a> &gt; <a href="index.source.html" class="el_package">com.globant.academy.model</a> &gt; <span class="el_source">ShoppingCart.java</span></div><h1>ShoppingCart.java</h1><pre class="source lang-java linenums">package com.globant.academy.model;
+
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.*;
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@EqualsAndHashCode
+@Entity
+@Table(name = &quot;shoppingcart&quot;)
+public class ShoppingCart {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name = &quot;customer_id&quot;)
+    private Customer customer;
+
+    @OneToMany(mappedBy = &quot;cart&quot;, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List&lt;CartItem&gt; productList;
+
+    @Column(name = &quot;status&quot;)
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
+
+<span class="fc" id="L41">    public ShoppingCart(Integer id,Customer customer, List&lt;CartItem&gt;productList) {</span>
+<span class="fc" id="L42">        validateCart(id, customer);</span>
+<span class="fc" id="L43">        this.id = id;</span>
+<span class="fc" id="L44">        this.customer = customer;</span>
+<span class="pc bpc" id="L45" title="1 of 2 branches missed.">        this.productList = productList!=null ? productList : new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L46">        this.status = Status.DRAFT;</span>
+<span class="fc" id="L47">    }</span>
+
+    private void validateCart(Integer id, Customer customer){
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if(Objects.isNull(id))throw new IllegalArgumentException(&quot;ID cannot be null&quot;);</span>
+<span class="fc bfc" id="L51" title="All 2 branches covered.">        if(Objects.isNull(customer))throw new IllegalArgumentException(&quot;Customer cannot be null&quot;);</span>
+<span class="fc" id="L52">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

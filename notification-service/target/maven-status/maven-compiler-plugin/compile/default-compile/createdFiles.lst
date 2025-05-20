@@ -1,0 +1,6 @@
+com\globant\academy\service\NotificationService.class
+com\globant\academy\model\Notification.class
+com\globant\academy\config\RabbitMQConfig.class
+com\globant\academy\service\NotificationService$1.class
+com\globant\academy\NotificationServiceApp.class
+com\globant\academy\model\Message.class

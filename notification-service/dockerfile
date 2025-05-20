@@ -1,0 +1,13 @@
+# Usa una imagen base de Java
+FROM openjdk:17-jdk-slim
+
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# Copia el archivo JAR generado
+COPY target/notification-service-1.0-SNAPSHOT.jar /app/notification-service.jar
+
+# Expon los puertos necesarios
+EXPOSE 8081
+
+ENTRYPOINT ["java", "-jar", "notification-service.jar"]

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ShoppingCartService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">shopping-cart-service</a> &gt; <a href="index.source.html" class="el_package">com.globant.academy.service</a> &gt; <span class="el_source">ShoppingCartService.java</span></div><h1>ShoppingCartService.java</h1><pre class="source lang-java linenums">package com.globant.academy.service;
+
+import com.globant.academy.config.RabbitMQConfig;
+import com.globant.academy.dto.CartItemDTO;
+import com.globant.academy.dto.Message;
+import com.globant.academy.dto.NotificationDTO;
+import com.globant.academy.dto.ShoppingCartDTO;
+import com.globant.academy.exception.CartItemNotFoundException;
+import com.globant.academy.exception.CustomerNotFoundException;
+import com.globant.academy.exception.ShoppingCartNotFoundException;
+import com.globant.academy.mapper.CartItemMapper;
+import com.globant.academy.mapper.CustomerMapper;
+import com.globant.academy.mapper.ProductMapper;
+import com.globant.academy.mapper.ShoppingCartMapper;
+import com.globant.academy.model.CartItem;
+import com.globant.academy.model.Customer;
+import com.globant.academy.model.ShoppingCart;
+import com.globant.academy.model.Status;
+import com.globant.academy.repository.CartItemRepository;
+import com.globant.academy.repository.CustomerRepository;
+import com.globant.academy.repository.ShoppingCartRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
+
+@EnableRabbit
+@Service
+public class ShoppingCartService {
+<span class="fc" id="L38">    private final Logger LOGGER = LoggerFactory.getLogger(ShoppingCartService.class);</span>
+
+    private final ShoppingCartRepository shoppingCartRepository;
+    private final CustomerRepository customerRepository;
+    private final CartItemRepository cartItemRepository;
+    private final RabbitTemplate rabbitTemplate;
+    private final RabbitMQConfig rabbitMQConfig;
+    private final CustomerMapper mapper;
+    private final CartItemMapper cartItemMapper;
+
+    @Autowired
+<span class="fc" id="L49">    public ShoppingCartService(ShoppingCartRepository shoppingCartRepository, CustomerRepository customerRepository, CartItemRepository cartItemRepository, RabbitTemplate rabbitTemplate, RabbitMQConfig rabbitMQConfig, CustomerMapper mapper, CartItemMapper cartItemMapper) {</span>
+<span class="fc" id="L50">        this.shoppingCartRepository = shoppingCartRepository;</span>
+<span class="fc" id="L51">        this.customerRepository = customerRepository;</span>
+<span class="fc" id="L52">        this.cartItemRepository = cartItemRepository;</span>
+<span class="fc" id="L53">        this.rabbitTemplate = rabbitTemplate;</span>
+<span class="fc" id="L54">        this.rabbitMQConfig = rabbitMQConfig;</span>
+<span class="fc" id="L55">        this.mapper = mapper;</span>
+<span class="fc" id="L56">        this.cartItemMapper = cartItemMapper;</span>
+        ;
+<span class="fc" id="L58">    }</span>
+
+    public ShoppingCart createShoppingCart(Integer customerId) throws CustomerNotFoundException {
+<span class="fc" id="L61">        Customer findCustomer = customerRepository.findById(customerId)</span>
+<span class="fc" id="L62">                .orElseThrow(()-&gt; new CustomerNotFoundException(&quot;Could not find customer with id: &quot;+ customerId));</span>
+
+<span class="fc" id="L64">        ShoppingCart cart = new ShoppingCart();</span>
+<span class="fc" id="L65">        cart.setCustomer(findCustomer);</span>
+<span class="fc" id="L66">        cart.setStatus(Status.DRAFT);</span>
+
+<span class="fc" id="L68">        return shoppingCartRepository.save(cart);</span>
+    }
+
+    public List&lt;ShoppingCart&gt; findAll(){
+<span class="nc" id="L72">        return shoppingCartRepository.findAll();</span>
+    }
+    @CacheEvict(value = &quot;shoppingCartCache&quot;, key = &quot;#cart.id&quot;)
+    public ShoppingCart updateCart(ShoppingCart cart) throws ShoppingCartNotFoundException, CustomerNotFoundException {
+<span class="nc" id="L76">        ShoppingCart findCart = shoppingCartRepository.findById(cart.getId())</span>
+<span class="nc" id="L77">                .orElseThrow(()-&gt; new ShoppingCartNotFoundException(&quot;Could not find cart with id: &quot; + cart.getId()));</span>
+
+<span class="nc" id="L79">        return shoppingCartRepository.save(cart);</span>
+    }
+
+    @CacheEvict(value = &quot;shoppingCartCache&quot;, key = &quot;#id&quot;)
+    public void deleteCart(Integer id) throws ShoppingCartNotFoundException {
+<span class="fc" id="L84">        Optional&lt;ShoppingCart&gt; findCart = shoppingCartRepository.findById(id);</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        if(findCart.isPresent()){</span>
+<span class="fc" id="L86">            shoppingCartRepository.delete(findCart.get());</span>
+        }else {
+<span class="fc" id="L88">            throw new ShoppingCartNotFoundException(&quot;Could not delete shopping cart with id &quot;+ id);</span>
+        }
+<span class="fc" id="L90">    }</span>
+
+    public ShoppingCart submitCart(Integer id) throws ShoppingCartNotFoundException {
+<span class="fc" id="L93">        ShoppingCart findCart = shoppingCartRepository.findById(id)</span>
+<span class="fc" id="L94">                .orElseThrow(()-&gt; new ShoppingCartNotFoundException(&quot;Could not find cart with id: &quot; + id));</span>
+
+<span class="fc" id="L96">        findCart.setStatus(Status.SUBMITTED);</span>
+
+<span class="fc" id="L98">        shoppingCartRepository.save(findCart);</span>
+
+<span class="fc" id="L100">        Customer customer = findCart.getCustomer();</span>
+<span class="fc" id="L101">        NotificationDTO notificationDTO = new NotificationDTO();</span>
+<span class="fc" id="L102">        notificationDTO.setName(customer.getName());</span>
+<span class="fc" id="L103">        notificationDTO.setLastname(customer.getLastname());</span>
+<span class="fc" id="L104">        notificationDTO.setEmail(customer.getEmail());</span>
+<span class="fc" id="L105">        notificationDTO.setPhone(customer.getPhone());</span>
+<span class="fc" id="L106">        notificationDTO.setMessage(Message.CART_SUBMITTED);</span>
+
+<span class="fc" id="L108">        LOGGER.info(&quot;Sending message to queue...&quot;);</span>
+<span class="fc" id="L109">        rabbitTemplate.convertAndSend(rabbitMQConfig.NOTIFICATION_QUEUE,notificationDTO);</span>
+
+<span class="fc" id="L111">        return findCart;</span>
+    }
+
+    public ShoppingCart getTotal(Integer id) throws ShoppingCartNotFoundException {
+<span class="fc" id="L115">        ShoppingCart cart= shoppingCartRepository.findById(id)</span>
+<span class="fc" id="L116">                .orElseThrow(()-&gt; new ShoppingCartNotFoundException(&quot;Could not find cart&quot;));</span>
+<span class="fc" id="L117">        return cart;</span>
+    }
+
+    @Cacheable(value = &quot;shoppingCartCache&quot;, key = &quot;#id&quot;)
+    public ShoppingCart findCart(Integer id) throws ShoppingCartNotFoundException {
+<span class="fc" id="L122">        return shoppingCartRepository.findById(id)</span>
+<span class="fc" id="L123">                .orElseThrow(()-&gt; new ShoppingCartNotFoundException(&quot;Could not find cart&quot;));</span>
+    }
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

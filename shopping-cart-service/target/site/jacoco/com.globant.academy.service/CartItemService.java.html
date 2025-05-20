@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CartItemService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">shopping-cart-service</a> &gt; <a href="index.source.html" class="el_package">com.globant.academy.service</a> &gt; <span class="el_source">CartItemService.java</span></div><h1>CartItemService.java</h1><pre class="source lang-java linenums">package com.globant.academy.service;
+
+import com.globant.academy.dto.CartItemDTO;
+import com.globant.academy.exception.CartItemNotFoundException;
+import com.globant.academy.exception.ProductNotFoundException;
+import com.globant.academy.exception.ShoppingCartNotFoundException;
+import com.globant.academy.mapper.ProductMapper;
+import com.globant.academy.model.CartItem;
+import com.globant.academy.model.Product;
+import com.globant.academy.model.ShoppingCart;
+import com.globant.academy.repository.CartItemRepository;
+import com.globant.academy.repository.ProductRepository;
+import com.globant.academy.repository.ShoppingCartRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class CartItemService {
+
+    private final CartItemRepository cartItemRepository;
+    private final ShoppingCartRepository shoppingCartRepository;
+    private final ProductRepository productRepository;
+    private final ProductMapper productMapper;
+
+    @Autowired
+<span class="fc" id="L30">    public CartItemService(CartItemRepository cartItemRepository, ShoppingCartRepository shoppingCartRepository, ProductRepository productRepository, ProductMapper productMapper) {</span>
+<span class="fc" id="L31">        this.cartItemRepository = cartItemRepository;</span>
+<span class="fc" id="L32">        this.shoppingCartRepository = shoppingCartRepository;</span>
+<span class="fc" id="L33">        this.productRepository = productRepository;</span>
+<span class="fc" id="L34">        this.productMapper = productMapper;</span>
+<span class="fc" id="L35">    }</span>
+
+
+
+
+    public CartItem createCartItem(Integer cartId, Integer productId, Integer quantity) throws ShoppingCartNotFoundException, ProductNotFoundException {
+<span class="fc" id="L41">        ShoppingCart cart = shoppingCartRepository.findById(cartId)</span>
+<span class="fc" id="L42">                .orElseThrow(() -&gt; new ShoppingCartNotFoundException(&quot;ShoppingCart with ID &quot; + cartId + &quot; not found&quot;));</span>
+<span class="fc" id="L43">        Product product = productRepository.findById(productId)</span>
+<span class="fc" id="L44">                .orElseThrow(() -&gt; new ProductNotFoundException(&quot;Product with ID &quot; + productId + &quot; not found&quot;));</span>
+
+<span class="fc" id="L46">        CartItem cartItem = new CartItem();</span>
+<span class="fc" id="L47">        cartItem.setCart(cart);</span>
+<span class="fc" id="L48">        cartItem.setQuantity(quantity);</span>
+<span class="fc" id="L49">        cartItem.setProduct(product);</span>
+
+<span class="fc" id="L51">        return cartItemRepository.save(cartItem);</span>
+    }
+
+    public List&lt;CartItem&gt; findAll(Integer cartId){
+<span class="nc" id="L55">        return cartItemRepository.findByCartId(cartId);</span>
+    }
+
+    public CartItem updateItem(CartItem cartItem) throws CartItemNotFoundException {
+<span class="fc" id="L59">        CartItem item = cartItemRepository.findById(cartItem.getId())</span>
+<span class="pc" id="L60">                .orElseThrow(()-&gt; new CartItemNotFoundException(&quot;Could not find Item&quot;));</span>
+
+<span class="nc" id="L62">        return cartItemRepository.save(cartItem);</span>
+    }
+
+    public void deleteCartItem(Integer id) throws CartItemNotFoundException {
+<span class="fc" id="L66">        Optional&lt;CartItem&gt; cartToDelete= cartItemRepository.findById(id);</span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        if(cartToDelete.isPresent()){</span>
+<span class="fc" id="L68">            cartItemRepository.delete(cartToDelete.get());</span>
+        } else {
+<span class="fc" id="L70">            throw new CartItemNotFoundException(&quot;CartItem with ID &quot;+ id + &quot;could not be found&quot;);</span>
+        }
+<span class="fc" id="L72">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
